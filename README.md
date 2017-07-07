@@ -15,8 +15,10 @@ sudo echo "127.0.0.1 login.stp.gov.py login spr.stp.gov.py spr" >> /etc/hosts
 
 **Nos desplazamos dentro del repositorio que acabamos de clonar y ejecutamos:**
 
+Asumiendo que el usuario desde el cual se esta trabajando es user:
+
 <pre>
-cd /home/user/stack
+cd /home/user/stack-docker
 sh build_dev.sh
 </pre>
 
@@ -31,7 +33,7 @@ Una vez completada la instalación, **iniciamos el entorno**.
 
 1. **Iniciamos el entorno**:
 <pre>
-cd /home/user/stack
+cd /home/user/stack-docker
 sh run.sh
 </pre>
 
@@ -73,3 +75,13 @@ a fines de recompilar el codigo
 <code>docker exec -it stack_XXXX_1 /bin/bash</code>  
 o  
 <code>docker exec -it stack_XXXX_1 /bin/sh</code>  
+
+
+Correspondiendo XXXX, al nombre del equipo correspondiente:
+
+* db
+* cache
+* backend
+* front
+
+Según descripción en stp-dev.yml.
