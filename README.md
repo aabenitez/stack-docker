@@ -85,3 +85,47 @@ Correspondiendo XXXX, al nombre del equipo correspondiente:
 * front
 
 Según descripción en stp-dev.yml.
+
+
+
+Problemas Conocidos
+=======
+
+
+En caso del que docker levante sore IPV6, los vhost dirigidos a 127.0.0.1 no serán resueltos de manera apropiada.
+
+**Existen dos workarounds posibles**:
+
+* **Apuntar sobre ipv6**:
+
+<code>
+sudo echo "::1 login.stp.gov.py login spr.stp.gov.py spr" >> /etc/hosts
+sudo echo ":: login.stp.gov.py login spr.stp.gov.py spr" >> /etc/hosts
+</code>
+
+
+* **Deshabilitar ipv6**:
+
+<code>
+sudo nano /etc/default/grub
+</code>
+
+Reemplazar la linea:
+
+<code>
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
+</code>
+
+con:
+
+<code>
+GRUB_CMDLINE_LINUX_DEFAULT="ipv6.disable=1 quiet splash"
+</code>
+
+Actualizamos grub:
+
+<code>
+sudo update-grub
+</code>
+
+Y finalmente reiniciamos, deberia estar resuelto el issue.
